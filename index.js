@@ -5,7 +5,7 @@ const porta = 4000; // Defina a porta na qual o servidor irá escutar
 
 //Configurando engine
 app.set('view engine', 'ejs') // Seta ao Express como EJS como view engine
-
+app.use(express.static('public'))
 //Rota para renderizar a página (hard code)
 // app.get('/', function(req, res){ // Requisição feita na raiz
 //   var nome = 'Rogério Jr';
@@ -30,12 +30,22 @@ app.get('/:nome?/:lang?', function(req, res){ // Requisição feita na raiz
   
   var exibirMsg = false
 
+  var produtos = [
+    {nome: 'Doritos', preco: 3.14},
+    {nome: 'Coca-Cola', preco: 5},
+    {nome: 'Leite', preco: 1.45},
+    {nome: 'Carne', preco: 24.55},
+    {nome: 'Red Bull', preco: 12},
+    {nome: 'Nescau', preco: 4.89},
+  ]
+
   res.render('index', {
     nome: nome,
     lang: lang,
     empresa: empresa,
     clientes: clientes,
-    msg: exibirMsg
+    msg: exibirMsg,
+    produtos: produtos,
   });
 });
 
