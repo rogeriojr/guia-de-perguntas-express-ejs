@@ -6,15 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guia de perguntas - Perguntar</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
     <header>
+        <navbar class="navbar navbar-ligth bg-dark">
+            <a class="navbar-brand" href="/">
+                <img src="http://rj-dev.wuaze.com/img/logo.png" alt="">
+            </a>
+        </navbar>
     </header>
     <main>
         <section>
             <div class="container">
-                <h3>Realizar pergunta</h3>
+                <div class="card" id="formulario-pergunta">
+                    <div class="card-header">
+                        <h3>Realizar pergunta</h3>
+                    </div>
+                    <card class="card-body">
+                        <form>
+                            <label>Título</label>
+                            <input type="text" placeholder="Título" class="form-control">
+                            <label>Descrição</label>
+                            <textarea placeholder="Descreva sua pergunta aqui" class="form-control"></textarea>
+                            <br>
+                            <button class="btn btn-dark">Perguntar</button>
+                        </form>
+                    </card>
+                </div>
+
+
             </div>
         </section>
     </main>
@@ -30,7 +52,7 @@
                             <h4>Siga me</h4>
                         </div>
                         <div class="footer_social">
-                            <a target="_blank" href="https://github.com/rogeriojr"><i class="fa fa-github"></i></a>
+                            <a target="_blank" href="https://github.com/rogeriojr"><i class="fa-brands fa-github"></i></a>
                             <a target="_blank" href="https://www.linkedin.com/in/rog%C3%A9rio-j%C3%BAnior-174719120/"><i class="fa fa-linkedin"></i></a>
                             <a target="_blank" href="https://api.whatsapp.com/send?phone=5564981294566&text=Ol%C3%A1%2C%20vi%20seu%20portifolio%20e%20me%20interessei%20no%20seu%20trabalho%21"><i class="fa fa-whatsapp"></i></a>
                         </div>
