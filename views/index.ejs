@@ -1,19 +1,40 @@
 <%- include('partials/header.ejs') -%>
 
-    <body>
-        <%- include('partials/navbar.ejs') -%>
-            <main>
-                <section>
-                    <div class="container">
-                        <div class="card" id="formulario-pergunta">
-                            <div class="card-header">
-                                <h3>Home</h3>
+<body>
+    <%- include('partials/navbar.ejs') -%>
+    <main>
+        <section>
+            <div class="container">
+                <div class="card" id="formulario-pergunta">
+                    <div class="card-header">
+                        <div class="container">
+                            <hr>
+                            <h1>Perguntas</h1>
+                            <hr>
+                            <a href="/perguntar" class="btn btn-dark">Perguntar</a>
+                            <hr>
+                            <% perguntas.forEach(pergunta=> { %>
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>
+                                        <h4><%= pergunta.titulo %></h4>
+                                    </p>
+                                    <p>
+                                        <%= pergunta.descricao %>
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-dark">Responder</button>
+                                </div>
                             </div>
+                            <br>
+                            <% }) %>
                         </div>
-
-
                     </div>
-                </section>
-            </main>
-    </body>
-    <%- include('partials/footer.ejs') -%>
+                </div>
+
+            </div>
+        </section>
+    </main>
+</body>
+<%- include('partials/footer.ejs') -%>

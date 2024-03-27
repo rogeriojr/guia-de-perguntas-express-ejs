@@ -3,7 +3,7 @@ const express = require('express'); // Importando o express
 const bodyParser = require('body-parser');
 const connection = require('./database/database'); // Conexão com o banco de dados
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const perguntaModel = require("./database/Pergunta")
+const Pergunta = require("./database/Pergunta")
 
 const app = express(); // Iniciando o express
 const porta = 4000; // Definindo a porta na qual o servidor irá escutar
@@ -29,7 +29,13 @@ app.use(bodyParser.json());
 //ROTAS 
 // Rota para renderizar a página inicial
 app.get('/', function(req, res) {
-    res.render('index');
+    Pergunta.findAll({ raw: true, order: [
+        ['id', 'DESC'] // Ordenação da listagem podendo ser 'ASC' ou 'DESC' //Pode ordenar qualquer atributo
+    ]}).then(perguntas => {
+        res.render('index', {
+            perguntas: perguntas
+        });
+    })
 });
 
 // Rota para renderizar a página de perguntas
@@ -41,7 +47,16 @@ app.get('/perguntar', function(req, res) {
 app.post('/salvarpergunta', function(req, res) {
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
-    res.send('Formulário recebido - Título: ' + titulo + ', Descrição: ' + descricao);
+
+    Pergunta.create({
+        titulo: titulo,
+        descricao: descricao
+    }).then(() => {
+        res.redirect('/');
+    }).catch((error) => {
+        console.log('Erro ao salvar pergunta:', error);
+        res.status(500).send('Erro ao salvar pergunta.');
+    });
 });
 
 // Tratamento de erro para rota padrão
