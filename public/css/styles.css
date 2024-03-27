@@ -5,3 +5,27 @@ body {
 #formulario-pergunta {
     margin-top: 5vh;
 }
+
+.footer_area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 20px 0;
+}
+
+.footer_logo img {
+    width: 100px;
+    height: auto;
+}
+
+.footer_social {
+    margin-top: 10px;
+}
+
+.footer_social img {
+    width: 30px;
+    height: auto;
+    margin-right: 10px;
+}
