@@ -6,11 +6,37 @@ const porta = 4000; // Defina a porta na qual o servidor irá escutar
 //Configurando engine
 app.set('view engine', 'ejs') // Seta ao Express como EJS como view engine
 
-//Bom saber:
-  // REQ => DADOS ENVIADOS PELO USUÁRIO
-  // RES => DADOS ENVIADOS PELO USUÁRIO
-app.get('/', function(req, res){ // Requisição feita na raiz
-  res.render('index'); // em vez de retornar algo ele vai renderizar no caso o arquivo views/index
+//Rota para renderizar a página (hard code)
+// app.get('/', function(req, res){ // Requisição feita na raiz
+//   var nome = 'Rogério Jr';
+//   var lang = 'Javascript';
+//   var empresa = 'RJ-DEV';
+//   var clientes = 10;
+
+//   res.render('index', {
+//     nome: nome,
+//     lang: lang,
+//     empresa: empresa,
+//     clientes: clientes
+//   });
+// });
+
+//Rota para renderizar a página (forma dinamica por params)
+app.get('/:nome?/:lang?', function(req, res){ // Requisição feita na raiz
+  var nome = req.params.nome; //recebe o param na req
+  var lang = req.params.lang; //recebe o param na req
+  var empresa = 'RJ-DEV';
+  var clientes = 10;
+  
+  var exibirMsg = false
+
+  res.render('index', {
+    nome: nome,
+    lang: lang,
+    empresa: empresa,
+    clientes: clientes,
+    msg: exibirMsg
+  });
 });
 
 // Tratamento de erro para rota padrão
