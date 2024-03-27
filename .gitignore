@@ -1,0 +1,28 @@
+# Arquivos de log
+logs
+*.log
+
+# Arquivos de dependências
+node_modules/
+
+# Arquivo de ambiente
+.env
+
+# Arquivos de compilação
+dist/
+
+# Arquivos de configuração de editor
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos de backup
+*.bak
+*.backup
+
+# Arquivos temporários
+*.tmp
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
