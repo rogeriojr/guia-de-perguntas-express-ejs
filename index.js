@@ -2,6 +2,8 @@
 const express = require('express'); // Importando o express
 const bodyParser = require('body-parser');
 const connection = require('./database/database'); // Conexão com o banco de dados
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const perguntaModel = require("./database/Pergunta")
 
 const app = express(); // Iniciando o express
 const porta = 4000; // Definindo a porta na qual o servidor irá escutar
