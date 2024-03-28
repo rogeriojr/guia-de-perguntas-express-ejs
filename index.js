@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const connection = require('./database/database'); // Conexão com o banco de dados
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Pergunta = require("./database/Pergunta")
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Resposta = require("./database/Resposta")
 
 const app = express(); // Iniciando o express
 const porta = 4000; // Definindo a porta na qual o servidor irá escutar
@@ -52,12 +54,32 @@ app.post('/salvarpergunta', function(req, res) {
         titulo: titulo,
         descricao: descricao
     }).then(() => {
+        res.status(200).send('Pergunta criada com sucesso!');
         res.redirect('/');
     }).catch((error) => {
         console.log('Erro ao salvar pergunta:', error);
         res.status(500).send('Erro ao salvar pergunta.');
     });
 });
+
+// Rota para listar uma pergunta
+app.get('/pergunta/:id', (req, res) =>{
+    var id = req.params.id
+    Pergunta.findOne({
+        where: {id: id}
+    }).then(pergunta => {
+        if (pergunta !== undefined) {
+            res.render('pergunta', {
+                pergunta: pergunta
+            })
+        } else {
+            alert('Pergunta não encontrada!')
+            res.redirect('/')
+        }
+    }).catch((error) => {
+        console.log('Pergunta não encontrada:', error);
+    });
+})
 
 // Tratamento de erro para rota padrão
 app.use(function(req, res) {

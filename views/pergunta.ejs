@@ -1,0 +1,26 @@
+<%- include('partials/header.ejs') -%>
+
+<body>
+    <%- include('partials/navbar.ejs') -%>
+    <main>
+        <section>
+            <div class="container">
+                <div class="card" id="detalhes-pergunta">
+                    <div class="card-header">
+                        <h3>Detalhes da pergunta</h3>
+                    </div>
+                    <div class="card-body">
+                        <% if (pergunta) { %>
+                            <h2><%= pergunta.titulo %></h2>
+                            <p><%= pergunta.descricao %></p>
+                        <% } else { %>
+                            <p>Pergunta não encontrada.</p>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+<%- include('partials/footer.ejs') -%>

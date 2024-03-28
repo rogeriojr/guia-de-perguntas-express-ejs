@@ -19,12 +19,9 @@
                                     <p>
                                         <h4><%= pergunta.titulo %></h4>
                                     </p>
-                                    <p>
-                                        <%= pergunta.descricao %>
-                                    </p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-dark">Responder</button>
+                                   <a href="/pergunta/<%= pergunta.id %>"><button class="btn btn-dark">Responder</button></a>
                                 </div>
                             </div>
                             <br>
